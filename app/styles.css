@@ -1,0 +1,395 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.scene {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  transition: background 2s ease;
+}
+
+.sun {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, #FFD700 0%, #FF6B6B 70%, transparent 100%);
+  border-radius: 50%;
+  transition: all 1s ease;
+}
+
+.birds {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.bird {
+  position: absolute;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.3);
+  animation: fly 15s linear infinite;
+}
+
+@keyframes fly {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(-5deg); }
+  50% { transform: translateY(0px) rotate(0deg); }
+  75% { transform: translateY(-15px) rotate(5deg); }
+}
+
+.ganges {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(to bottom, #4A90A4 0%, #2E5266 100%);
+  overflow: hidden;
+}
+
+.water {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  width: 5%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+  animation: wave 3s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.reflection {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 215, 0, 0.2) 0%, transparent 50%);
+  opacity: 0.6;
+}
+
+.ghat {
+  position: absolute;
+  bottom: 20%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+}
+
+.steps {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.step {
+  position: absolute;
+  width: 100%;
+  background: linear-gradient(to bottom, #C19A6B 0%, #8B7355 100%);
+  border-top: 2px solid #A0826D;
+}
+
+.temple {
+  position: absolute;
+  right: 10%;
+  bottom: 50%;
+  width: 80px;
+  height: 100px;
+}
+
+.dome {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 40px;
+  background: linear-gradient(to bottom, #D4AF37 0%, #C19A6B 100%);
+  border-radius: 50% 50% 0 0;
+}
+
+.spire {
+  position: absolute;
+  bottom: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 30px solid #D4AF37;
+}
+
+.practitioners {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.practitioner {
+  position: absolute;
+  width: 40px;
+  height: 60px;
+  transition: all 0.5s ease;
+}
+
+.head {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: #8B4513;
+  border-radius: 50%;
+}
+
+.body {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 25px;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FFD93D 100%);
+  border-radius: 7px;
+}
+
+.arm {
+  position: absolute;
+  width: 4px;
+  height: 20px;
+  background: #8B4513;
+  border-radius: 2px;
+  transform-origin: top center;
+}
+
+.arm.left {
+  top: 14px;
+  left: 8px;
+}
+
+.arm.right {
+  top: 14px;
+  right: 8px;
+}
+
+.leg {
+  position: absolute;
+  width: 4px;
+  height: 22px;
+  background: #654321;
+  border-radius: 2px;
+  transform-origin: top center;
+}
+
+.leg.left {
+  top: 35px;
+  left: 14px;
+}
+
+.leg.right {
+  top: 35px;
+  right: 14px;
+}
+
+/* Pose Animations */
+.pose-standing .arm.left,
+.pose-standing .arm.right {
+  transform: rotate(0deg);
+}
+
+.pose-standing .leg.left,
+.pose-standing .leg.right {
+  transform: rotate(0deg);
+}
+
+.pose-raised .arm.left {
+  transform: rotate(-140deg);
+}
+
+.pose-raised .arm.right {
+  transform: rotate(140deg);
+}
+
+.pose-raised .body {
+  transform: translateX(-50%) rotate(-10deg);
+}
+
+.pose-forward .body {
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.pose-forward .arm.left,
+.pose-forward .arm.right {
+  transform: rotate(90deg);
+}
+
+.pose-lunge .body {
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.pose-lunge .leg.left {
+  transform: rotate(-45deg);
+}
+
+.pose-lunge .leg.right {
+  transform: rotate(45deg);
+}
+
+.pose-plank .body {
+  transform: translateX(-50%) rotate(0deg);
+}
+
+.pose-plank .arm.left,
+.pose-plank .arm.right {
+  transform: rotate(-90deg);
+}
+
+.pose-cobra .body {
+  transform: translateX(-50%) rotate(-30deg);
+}
+
+.pose-cobra .arm.left,
+.pose-cobra .arm.right {
+  transform: rotate(-45deg);
+}
+
+.pose-down-dog .body {
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.pose-down-dog .arm.left,
+.pose-down-dog .arm.right {
+  transform: rotate(-135deg);
+}
+
+.diyas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.diya {
+  position: absolute;
+  width: 8px;
+  height: 6px;
+  background: #D4AF37;
+  border-radius: 50% 50% 0 0;
+}
+
+.flame {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  background: linear-gradient(to top, #FF6B6B 0%, #FFD700 100%);
+  border-radius: 50% 50% 0 0;
+  animation: flicker 0.5s ease-in-out infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.2); }
+}
+
+.info-panel {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  max-width: 350px;
+  z-index: 1000;
+}
+
+.info-panel h1 {
+  font-size: 24px;
+  color: #2E5266;
+  margin-bottom: 15px;
+  border-bottom: 3px solid #FF6B6B;
+  padding-bottom: 10px;
+}
+
+.current-pose h2 {
+  font-size: 20px;
+  color: #D4AF37;
+  margin-bottom: 5px;
+}
+
+.current-pose p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.pose-count {
+  display: inline-block;
+  background: #FFD93D;
+  color: #2E5266;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.location {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px solid #eee;
+}
+
+.location p {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+  .info-panel {
+    max-width: 280px;
+    padding: 15px;
+  }
+
+  .info-panel h1 {
+    font-size: 18px;
+  }
+
+  .practitioner {
+    transform: scale(0.8);
+  }
+}
